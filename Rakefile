@@ -5,7 +5,9 @@ task 'jobs:work' do
 
   def handle_tweet(tweet)
     return unless tweet['text']
-    puts "#{tweet['user']['screen_name']}: #{tweet['text']}"
+    puts redis.setnx Time.parse(tweet['created_at']).to_i, tweet['id']
+    # puts "#{tweet['user']['screen_name']}: #{tweet['text']}"
+    # puts "#{tweet['id']} #{Time.parse(tweet['created_at']).to_i}"
   end
 
   EventMachine.run do
