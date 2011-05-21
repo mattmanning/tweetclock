@@ -16,3 +16,9 @@ set :redis, ENV['REDISTOGO_URL']
 get '/' do
   redis.get(Time.now.to_i - 5)
 end
+
+get '/:api_version/id_at/:posix' do
+  if params[:api_version] == '1'
+    redis.get params[:posix].to_i
+  end
+end
