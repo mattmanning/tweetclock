@@ -1,6 +1,8 @@
 require './tweetclock'
 
 task 'jobs:work' do 
+  # Thanks Adam Wiggins
+  # http://adam.heroku.com/past/2010/3/19/consuming_the_twitter_streaming_api/
   url = 'http://stream.twitter.com/1/statuses/sample.json'
 
   def handle_tweet(tweet)
