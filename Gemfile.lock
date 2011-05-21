@@ -1,13 +1,18 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    activesupport (3.0.7)
     addressable (2.2.6)
+    builder (3.0.0)
     em-http-request (0.3.0)
       addressable (>= 2.0.0)
       escape_utils
       eventmachine (>= 0.12.9)
     escape_utils (0.2.3)
     eventmachine (0.12.10)
+    hoptoad_notifier (2.4.9)
+      activesupport
+      builder
     rack (1.2.2)
     redis (2.2.0)
     sinatra (1.2.6)
@@ -23,5 +28,6 @@ PLATFORMS
 
 DEPENDENCIES
   em-http-request
+  hoptoad_notifier
   sinatra
   sinatra-redis
