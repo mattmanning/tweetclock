@@ -38,5 +38,7 @@ task 'jobs:work' do
         handle_tweet JSON.parse(line)
       end
     end
+
+    http.disconnect { raise "Connection to Twitter Streaming API lost." }
   end
 end
