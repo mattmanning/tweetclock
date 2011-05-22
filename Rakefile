@@ -1,13 +1,26 @@
 require './tweetclock'
 
+SECONDS_TTL =     12 * 60 * 60
+MINUTES_TTL = 9 * 24 * 60 * 60
+
 task 'jobs:work' do 
   # Thanks Adam Wiggins
   # http://adam.heroku.com/past/2010/3/19/consuming_the_twitter_streaming_api/
   url = 'http://stream.twitter.com/1/statuses/sample.json'
 
+  def set_expiration(time)
+    if time.sec == 0
+      redis.expire time.to_i, MINUTES_TTL
+    else
+      redis.expire time.to_i, SECONDS_TTL
+    end
+  end
+
   def handle_tweet(tweet)
     return unless tweet['text']
-    redis.setnx Time.parse(tweet['created_at']).to_i, tweet['id']
+    time = Time.parse(tweet['created_at'])
+    redis.setnx time.to_i, tweet['id']
+    set_expiration(time)
     # puts "#{tweet['user']['screen_name']}: #{tweet['text']}"
     # puts "#{tweet['id']} #{Time.parse(tweet['created_at']).to_i}"
   end
