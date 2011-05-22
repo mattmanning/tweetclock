@@ -5,6 +5,10 @@ require 'json'
 require 'sinatra/redis'
 require 'hoptoad_notifier'
 
+configure :production do
+  require 'newrelic_rpm'
+end
+
 HoptoadNotifier.configure do |config|
   config.api_key = ENV['HOPTOAD_API_KEY']
 end

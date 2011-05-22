@@ -13,6 +13,7 @@ GEM
     hoptoad_notifier (2.4.9)
       activesupport
       builder
+    newrelic_rpm (3.0.1)
     rack (1.2.2)
     redis (2.2.0)
     sinatra (1.2.6)
@@ -29,5 +30,6 @@ PLATFORMS
 DEPENDENCIES
   em-http-request
   hoptoad_notifier
+  newrelic_rpm
   sinatra
   sinatra-redis
