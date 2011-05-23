@@ -3,6 +3,8 @@ require 'eventmachine'
 require 'em-http'
 require 'json'
 require 'sinatra/redis'
+require 'active_support/core_ext'
+
 
 SECONDS_TTL =     12 * 60 * 60
 MINUTES_TTL = 9 * 24 * 60 * 60
