@@ -28,6 +28,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   em-http-request
   hoptoad_notifier
   newrelic_rpm
