@@ -34,8 +34,10 @@ get '/*/id_at/*.*' do |api_version, posix_time, ext|
 
     case ext
     when 'json'
+      content_type 'application/json', :charset => 'utf-8'
       tt.to_json
     when 'xml'
+      content_type 'application/xml', :charset => 'utf-8'
       tt.to_xml
     else
       tt.id
