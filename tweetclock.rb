@@ -60,6 +60,10 @@ class TweetTime
     to_h.to_json
   end
 
+  def to_xml
+    to_h.to_xml
+  end
+
   def self.find(time)
     if (Time.now.to_i - time < SECONDS_TTL)
       new time, redis.get(time)
