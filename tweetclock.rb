@@ -10,6 +10,7 @@ SECONDS_TTL =     12 * 60 * 60
 MINUTES_TTL = 9 * 24 * 60 * 60
 
 configure :production do
+  disable :raise_errors
   require 'newrelic_rpm'
   require 'hoptoad_notifier'
 
@@ -18,7 +19,10 @@ configure :production do
   end
 
   use HoptoadNotifier::Rack
-  enable :raise_errors
+end
+
+configure :development do
+  enable :show_exceptions
 end
 
 set :redis, ENV['REDISTOGO_URL']
