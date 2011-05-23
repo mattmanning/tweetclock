@@ -27,21 +27,27 @@ get '/' do
   redis.get(Time.now.to_i - 5)
 end
 
-get '/:api_version/id_at/:posix_time.:format' do
-  if params[:api_version] == '1'
-    tt = TweetTime.find(params[:posix_time].to_i)
+get '/*/id_at/*.*' do |api_version, posix_time, ext|
+  if api_version == '1'
+    tt = TweetTime.find(posix_time.to_i)
     return if tt.nil?
 
-    case params[:format]
+    case ext
     when 'json'
       tt.to_json
     when 'xml'
       tt.to_xml
-    when 'atom'
-      tt.to_atom
     else
-      tt.time
+      tt.id
     end
+  end
+end
+
+get '/*/id_at/*' do |api_version, posix_time|
+  if api_version == '1'
+    tt = TweetTime.find(posix_time.to_i)
+    return if tt.nil?
+    tt.id
   end
 end
 
