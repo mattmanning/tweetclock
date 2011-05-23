@@ -4,6 +4,9 @@ require 'em-http'
 require 'json'
 require 'sinatra/redis'
 
+SECONDS_TTL =     12 * 60 * 60
+MINUTES_TTL = 9 * 24 * 60 * 60
+
 configure :production do
   require 'newrelic_rpm'
   require 'hoptoad_notifier'

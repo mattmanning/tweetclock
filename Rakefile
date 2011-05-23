@@ -1,8 +1,5 @@
 require './tweetclock'
 
-SECONDS_TTL =     12 * 60 * 60
-MINUTES_TTL = 9 * 24 * 60 * 60
-
 task 'jobs:work' do 
   # Thanks Adam Wiggins
   # http://adam.heroku.com/past/2010/3/19/consuming_the_twitter_streaming_api/
