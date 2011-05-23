@@ -3,10 +3,10 @@ require 'eventmachine'
 require 'em-http'
 require 'json'
 require 'sinatra/redis'
-require 'hoptoad_notifier'
 
 configure :production do
   require 'newrelic_rpm'
+  require 'hoptoad_notifier'
 end
 
 HoptoadNotifier.configure do |config|
