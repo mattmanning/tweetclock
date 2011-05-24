@@ -27,6 +27,11 @@ end
 
 set :redis, ENV['REDISTOGO_URL']
 
+# There's got to be a better way to do this.
+get '/' do
+    File.read(File.join('public', 'index.html'))
+end
+
 get '/test' do
   redis.get(Time.now.to_i - 5)
 end
