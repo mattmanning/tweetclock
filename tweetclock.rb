@@ -27,7 +27,7 @@ end
 
 set :redis, ENV['REDISTOGO_URL']
 
-get '/' do
+get '/test' do
   redis.get(Time.now.to_i - 5)
 end
 
