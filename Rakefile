@@ -14,12 +14,10 @@ task 'jobs:work' do
   end
 
   def handle_tweet(tweet)
-    return unless tweet['text']
+    return unless tweet['created_at']
     time = Time.parse(tweet['created_at'])
     redis.setnx time.to_i, tweet['id']
     set_expiration(time)
-    # puts "#{tweet['user']['screen_name']}: #{tweet['text']}"
-    # puts "#{tweet['id']} #{Time.parse(tweet['created_at']).to_i}"
   end
 
   EventMachine.run do
