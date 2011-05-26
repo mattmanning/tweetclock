@@ -6,8 +6,8 @@ require 'sinatra/redis'
 require 'active_support/core_ext'
 require File.expand_path('../models/tweet_time.rb', __FILE__)
 
-SECONDS_TTL =     12 * 60 * 60
-MINUTES_TTL = 9 * 24 * 60 * 60
+SECONDS_TTL = 12.hours
+MINUTES_TTL = 9.days
 
 configure :production do
   disable :raise_errors
